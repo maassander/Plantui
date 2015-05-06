@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">PlantuiApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="button_gototimermenu">Go To Timer</string>
+    <string name="button_gotobluetoothmenu">Go To Bluetooth</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="title_activity_bluetooth">bluetooth</string>
+    <string name="list_devices">List Devices</string>
+    <string name="scan">Scan</string>
+    <string name="connect">Connect</string>
+    <string name="bluetoothswitch">Bluetooth On / Off</string>
+    <string name="visible">Get Visible</string>
+
+    <string name="title_activity_timer">Timer</string>
+    <string name="button_addtimer">Add Timer</string>
+    <string name="button_removetimer">Remove Timer</string>
+    <string name="label_timer">Timer</string>
+    <string name="button_settimer">Set as schedule</string>
+    <string name="label_hint_ScheduleName">Schedule Name</string>
+    <string name="label_awake">Awake</string>
+    <string name="label_Sleep">Sleep</string>
+
+    <string name="plantui">Plantui</string>
+    <string name="red">Red</string>
+    <string name="blue">Blue</string>
+    <string name="green">Green</string>
+    <string name="title_activity_blueled">blueled</string>
+    <string name="title_activity_redled">redled</string>
+    <string name="title_activity_greenled">greenled</string>
+
+    <string name="redvalue">Red led value</string>
+    <string name="bluevalue">Blue led value</string>
+    <string name="greenvalue">Green led value</string>
+    <string name="title_activity_grid">grid</string>
+
+    <string name="title_activity_splashscreen">splashscreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="help">More Info</string>
+    <string name="save">Save</string>
+    <string name="load">Load</string>
+    <string name="switchbluetooth">switchbluetooth</string>
+</resources>
