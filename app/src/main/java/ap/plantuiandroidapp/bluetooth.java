@@ -127,22 +127,21 @@ public class bluetooth extends ActionBarActivity {
             bt_Switch.setChecked(false);
         }
         else {
-            Toast.makeText(getApplicationContext(), "Your device has already been enabled." +
-                            "\n" + "Scanning for remote Bluetooth devices...",
+            Toast.makeText(getApplicationContext(), "Scanning for remote Bluetooth devices...",
                     Toast.LENGTH_SHORT).show();
-            // To discover remote Bluetooth devices
-            discoverDevices();
             // Make local device discoverable by other devices
             makeDiscoverable();
+            // To discover remote Bluetooth devices
+            discoverDevices();
         }
     }
 
-    /*public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == ENABLE_BT_REQUEST_CODE) {
 
             // Bluetooth successfully enabled!
-            if (resultCode == Activity.RESULT_OK) {
+            if (resultCode == ActionBarActivity.RESULT_OK) {
                 Toast.makeText(getApplicationContext(), "Bluetooth is now enabled." +
                                 "\n" + "Scanning for remote Bluetooth devices...",
                         Toast.LENGTH_SHORT).show();
@@ -176,7 +175,7 @@ public class bluetooth extends ActionBarActivity {
                         Toast.LENGTH_SHORT).show();
             }
         }
-    }*/
+    }
 
     protected void discoverDevices(){
         // To scan for remote Bluetooth devices
