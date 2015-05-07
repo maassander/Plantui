@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="circular_progress_default_progress_red">#B20202</color>
+    <color name="circular_progress_default_title_red">#DA5755</color>
+    <color name="circular_progress_default_background_red">#FAFAFA</color>
+    <color name="circular_progress_default_subtitle_red">#B20202</color>
+    <color name="circular_progress_default_progress_green">#36A223</color>
+    <color name="circular_progress_default_title_green">#bada55</color>
+    <color name="circular_progress_default_background_green">#FAFAFA</color>
+    <color name="circular_progress_default_subtitle_green">#36A223</color>
+    <color name="circular_progress_default_progress_blue">#372AC7</color>
+    <color name="circular_progress_default_title_blue">#5555DA</color>
+    <color name="circular_progress_default_background_blue">#FAFAFA</color>
+    <color name="circular_progress_default_subtitle_blue">#372AC7</color>
+</resources>

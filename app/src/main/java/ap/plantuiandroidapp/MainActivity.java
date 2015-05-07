@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
+import ap.plantuiandroidapp.CircularProgressBarRed.ProgressAnimationListenerRed;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -39,29 +39,29 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         redbtn.setOnClickListener(this);
         greenbtn = (Button)findViewById(R.id.Btn_Green);
         greenbtn.setOnClickListener(this);
-        SeekbarRed = (SeekBar)findViewById(R.id.SeekbarRed);
+        //SeekbarRed = (SeekBar)findViewById(R.id.SeekbarRed);
         SeekbarGreen = (SeekBar)findViewById(R.id.SeekbarGreen);
         SeekbarBlue = (SeekBar)findViewById(R.id.SeekbarBlue);
-        SeekbarRed.setMax(255);
-        SeekbarRed.setEnabled(false);
+        //SeekbarRed.setMax(255);
+        //SeekbarRed.setEnabled(false);
         LoadValues = (Button)findViewById(R.id.ButtonLoadValues);
         LoadValues.setOnClickListener(this);
-        SeekbarRed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                RedValue.setText(progress + "");
-            }
+        //SeekbarRed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+          //  @Override
+          //  public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+         //       RedValue.setText(progress + "");
+          //  }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+        // @Override
+        //  public void onStartTrackingTouch(SeekBar seekBar) {
 
-            }
+        //  }
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+        //   @Override
+        //   public void onStopTrackingTouch(SeekBar seekBar) {
 
-            }
-        });
+        //    }
+        // });
         SeekbarBlue.setMax(255);
         SeekbarBlue.setEnabled(false);
         SeekbarBlue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -101,6 +101,26 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         RedValue = (TextView)findViewById(R.id.TextViewSeekBarRed);
         BlueValue =(TextView)findViewById(R.id.TextViewSeekBarBlue);
         GreenValue =(TextView)findViewById(R.id.TextViewSeekBarGreen);
+        final CircularProgressBarRed c1 = (CircularProgressBarRed) findViewById(R.id.circularprogressbarred);
+        int progress1 = 0;
+//Determine here when loading values from internal data -> progress1 = redvalue;
+        c1.animateProgressTo(0, progress1, new ProgressAnimationListenerRed() {
+
+            @Override
+            public void onAnimationStart() {
+            }
+
+            @Override
+            public void onAnimationProgress(int progress11) {
+                c1.setTitle(progress11 + "%");
+            }
+
+            @Override
+            public void onAnimationFinish() {
+                c1.setSubTitle("RED");
+            }
+        });
+
     }
 
 
@@ -173,7 +193,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     {
 
         try {
-            FileInputStream fileRedLed =  openFileInput("ValueRed.txt");
+            //FileInputStream fileRedLed =  openFileInput("ValueRed.txt");
             FileInputStream fisGreenLed = openFileInput("ValueGreen.txt");
             FileInputStream fisBlueLed = openFileInput("ValueBlue.txt");
             int read;
@@ -186,10 +206,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             *32 40 40 for example that's why we use (char)
              */
 
-            while ((read = fileRedLed.read()) != -1)
-            {
-                SeekbarRed.setProgress((char)read);
-            }
+            //while ((read = fileRedLed.read()) != -1)
+            //{
+            //    SeekbarRed.setProgress((char)read);
+           // }
             while((read = fisGreenLed.read())!=-1)
             {
                 SeekbarGreen.setProgress((char)read);

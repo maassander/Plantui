@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:circular="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -73,17 +74,16 @@
                 android:layout_height="match_parent"
                 >
 
-                <SeekBar
-                    android:layout_width="100dp"
-                    android:layout_height="20dp"
-                    android:id="@+id/SeekbarRed"
-                    android:progressDrawable="@drawable/seekbar_progress"
-                    android:rotation="270"
+                <ap.plantuiandroidapp.CircularProgressBarRed
+                    android:id="@+id/circularprogressbarred"
+                    android:layout_width="110dip"
+                    android:layout_height="110dip"
+
+                    circular:subtitle=""
+                    circular:title="Red"
                     android:indeterminate="false"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="40dp"
-                    android:layout_marginTop="40dp"
-                    android:thumb="@drawable/thumb" />
+
+                    style="Widget2.ProgressBar.CircularProgressBarRed" />
 
                 <SeekBar
                     android:layout_width="100dp"
