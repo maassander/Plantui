@@ -8,9 +8,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.SeekBar;
+
 import android.widget.TextView;
 import ap.plantuiandroidapp.CircularProgressBarRed.ProgressAnimationListenerRed;
+import ap.plantuiandroidapp.CircularProgressBarGreen.ProgressAnimationListenerGreen;
+import ap.plantuiandroidapp.CircularProgressBarBlue.ProgressAnimationListenerBlue;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,10 +22,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     Button Timerbtn, Bluetoothbtn, bluebtn, redbtn, greenbtn, LoadValues;
 
-    SeekBar SeekbarRed ,SeekbarGreen ,SeekbarBlue;
+
 
     TextView RedValue, BlueValue, GreenValue;
-
+     CircularProgressBarRed c1 = null;
+     CircularProgressBarGreen c2 = null;
+     CircularProgressBarBlue c3 = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +44,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         greenbtn = (Button)findViewById(R.id.Btn_Green);
         greenbtn.setOnClickListener(this);
         //SeekbarRed = (SeekBar)findViewById(R.id.SeekbarRed);
-        SeekbarGreen = (SeekBar)findViewById(R.id.SeekbarGreen);
-        SeekbarBlue = (SeekBar)findViewById(R.id.SeekbarBlue);
+        //SeekbarGreen = (SeekBar)findViewById(R.id.SeekbarGreen);
+        //SeekbarBlue = (SeekBar)findViewById(R.id.SeekbarBlue);
         //SeekbarRed.setMax(255);
         //SeekbarRed.setEnabled(false);
         LoadValues = (Button)findViewById(R.id.ButtonLoadValues);
@@ -62,65 +66,51 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         //    }
         // });
-        SeekbarBlue.setMax(255);
-        SeekbarBlue.setEnabled(false);
-        SeekbarBlue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                BlueValue.setText(progress + "");
-            }
+        //SeekbarBlue.setMax(255);
+        //SeekbarBlue.setEnabled(false);
+        //SeekbarBlue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+          //  @Override
+          //  public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+          //      BlueValue.setText(progress + "");
+          //  }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+          //  @Override
+          //  public void onStartTrackingTouch(SeekBar seekBar) {
 
-            }
+           // }
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+           // @Override
+           // public void onStopTrackingTouch(SeekBar seekBar) {
 
-            }
-        });
-        SeekbarGreen.setMax(255);
-        SeekbarGreen.setEnabled(false);
-        SeekbarGreen.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                GreenValue.setText(progress + "");
-            }
+           // }
+        //});
+        //SeekbarGreen.setMax(255);
+        //SeekbarGreen.setEnabled(false);
+       //SeekbarGreen.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+         //   @Override
+          //  public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+          //      GreenValue.setText(progress + "");
+         //   }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
+          //  @Override
+          //  public void onStartTrackingTouch(SeekBar seekBar) {
 
-            }
+         //   }
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+        //    @Override
+        //    public void onStopTrackingTouch(SeekBar seekBar) {
 
-            }
-        });
+         //   }
+       // });
         RedValue = (TextView)findViewById(R.id.TextViewSeekBarRed);
         BlueValue =(TextView)findViewById(R.id.TextViewSeekBarBlue);
         GreenValue =(TextView)findViewById(R.id.TextViewSeekBarGreen);
-        final CircularProgressBarRed c1 = (CircularProgressBarRed) findViewById(R.id.circularprogressbarred);
-        int progress1 = 0;
-//Determine here when loading values from internal data -> progress1 = redvalue;
-        c1.animateProgressTo(0, progress1, new ProgressAnimationListenerRed() {
-
-            @Override
-            public void onAnimationStart() {
-            }
-
-            @Override
-            public void onAnimationProgress(int progress11) {
-                c1.setTitle(progress11 + "%");
-            }
-
-            @Override
-            public void onAnimationFinish() {
-                c1.setSubTitle("RED");
-            }
-        });
-
+        c1 = (CircularProgressBarRed) findViewById(R.id.circularprogressbarred);
+        c1.setEnabled(false);
+        c2 = (CircularProgressBarGreen) findViewById(R.id.circularprogressbargreen);
+        c2.setEnabled(false);
+        c3 = (CircularProgressBarBlue) findViewById(R.id.circularprogressbarblue);
+        c3.setEnabled(false);
     }
 
 
@@ -193,10 +183,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     {
 
         try {
-            //FileInputStream fileRedLed =  openFileInput("ValueRed.txt");
+            FileInputStream fileRedLed =  openFileInput("ValueRed.txt");
             FileInputStream fisGreenLed = openFileInput("ValueGreen.txt");
             FileInputStream fisBlueLed = openFileInput("ValueBlue.txt");
             int read;
+
             //a while because otherwise its only the first byte he read and then stops.
             /*
             *
@@ -206,17 +197,75 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             *32 40 40 for example that's why we use (char)
              */
 
-            //while ((read = fileRedLed.read()) != -1)
-            //{
-            //    SeekbarRed.setProgress((char)read);
-           // }
+            while ((read = fileRedLed.read()) != -1)
+            {
+               char d= (char)read;
+              double Calculation = (((double)d/255)*100);
+
+
+                c1.animateProgressTo(0, ((int) Calculation), new ProgressAnimationListenerRed() {
+
+
+                    @Override
+                    public void onAnimationStart() {
+                    }
+
+                    @Override
+                    public void onAnimationProgress(int progress) {
+                        c1.setTitle(progress + "%");
+
+                    }
+                    @Override
+                    public void onAnimationFinish() {
+                        c1.setSubTitle("RED");
+                    }
+                });
+
+            }
             while((read = fisGreenLed.read())!=-1)
             {
-                SeekbarGreen.setProgress((char)read);
+                char d= (char)read;
+                double Calculation = (((double)d/255)*100);
+
+                c2.animateProgressTo(0, (int)Calculation, new ProgressAnimationListenerGreen() {
+
+                    @Override
+                    public void onAnimationStart() {
+                    }
+
+                    @Override
+                    public void onAnimationProgress(int progress21) {
+                        c2.setTitle(progress21 + "%");
+                    }
+
+                    @Override
+                    public void onAnimationFinish() {
+                        c2.setSubTitle("GREEN");
+                    }
+                });
+
             }
             while((read = fisBlueLed.read())!=-1)
             {
-                SeekbarBlue.setProgress((char)read);
+                char d= (char)read;
+                double Calculation = (((double)d/255)*100);
+
+                c3.animateProgressTo(0, (int)Calculation , new ProgressAnimationListenerBlue() {
+
+                    @Override
+                    public void onAnimationStart() {
+                    }
+
+                    @Override
+                    public void onAnimationProgress(int progress31) {
+                        c3.setTitle(progress31 + "%");
+                    }
+
+                    @Override
+                    public void onAnimationFinish() {
+                        c3.setSubTitle("BLUE");
+                    }
+                });
             }
 
         }

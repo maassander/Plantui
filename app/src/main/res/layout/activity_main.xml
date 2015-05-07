@@ -76,38 +76,38 @@
 
                 <ap.plantuiandroidapp.CircularProgressBarRed
                     android:id="@+id/circularprogressbarred"
-                    android:layout_width="110dip"
-                    android:layout_height="110dip"
-
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     circular:subtitle=""
                     circular:title="Red"
                     android:indeterminate="false"
+                    style="Widget2.ProgressBar.CircularProgressBarRed"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="20dp" />
 
-                    style="Widget2.ProgressBar.CircularProgressBarRed" />
-
-                <SeekBar
-                    android:layout_width="100dp"
-                    android:layout_height="20dp"
-                    android:progressDrawable="@drawable/seekbar_progress_green"
-                    android:id="@+id/SeekbarGreen"
-                    android:rotation="270"
+                <ap.plantuiandroidapp.CircularProgressBarGreen
+                    android:id="@+id/circularprogressbargreen"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    circular:subtitle=""
+                    circular:title="Green"
                     android:indeterminate="false"
+                    style="Widget.ProgressBar.CircularProgressBarGreen"
                     android:layout_weight="1"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginBottom="40dp"
-                    android:thumb="@drawable/thumb" />
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center_horizontal" />
 
-                <SeekBar
-                    android:layout_width="100dp"
-                    android:layout_height="20dp"
-                    android:id="@+id/SeekbarBlue"
-                    android:rotation="270"
-                    android:progressDrawable="@drawable/seekbar_progress_blue"
-                    android:layout_marginBottom="40dp"
-                    android:layout_column="2"
+                <ap.plantuiandroidapp.CircularProgressBarBlue
+                    android:id="@+id/circularprogressbarblue"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    circular:subtitle=""
+                    circular:title="Blue"
+                    android:indeterminate="false"
+                    style="Widget3.ProgressBar.CircularProgressBarBlue"
                     android:layout_weight="1"
-                    android:layout_marginTop="40dp"
-                    android:thumb="@drawable/thumb" />
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center_horizontal" />
 
             </TableRow>
 
