@@ -33,34 +33,7 @@
             android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="ap.plantuiapp.MainActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".blueled"
-            android:label="@string/title_activity_blueled" >
-            <intent-filter>
-                <action android:name="ap.plantuiapp.blueled" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".redled"
-            android:label="@string/title_activity_redled" >
-            <intent-filter>
-                <action android:name="ap.plantuiapp.redled" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".greenled"
-            android:label="@string/title_activity_greenled" >
-            <intent-filter>
-                <action android:name="ap.plantuiapp.greenled" />
+                <action android:name="ap.plantuiandroidapp.MainActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -72,8 +45,19 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ap.plantuiandroidapp.MainActivity" />
+
             <intent-filter>
-                <action android:name="ap.plantuiapp.bluetooth" />
+                <action android:name="ap.plantuiandroidapp.bluetooth" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Colors"
+            android:label="@string/title_activity_colors" >
+            <intent-filter>
+                <action android:name="ap.plantuiandroidapp.Colors" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

@@ -20,11 +20,7 @@ import java.io.IOException;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener{
 
-    Button Timerbtn, Bluetoothbtn, bluebtn, redbtn, greenbtn, LoadValues;
-
-
-
-    TextView RedValue, BlueValue, GreenValue;
+    Button Timerbtn, Bluetoothbtn, LoadValues, color;
      CircularProgressBarRed c1 = null;
      CircularProgressBarGreen c2 = null;
      CircularProgressBarBlue c3 = null;
@@ -35,76 +31,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         Timerbtn = (Button) findViewById(R.id.ButtonGoToTimerMenu);
         Timerbtn.setOnClickListener(this);
-        bluebtn = (Button)findViewById(R.id.Btn_Blue);
-        bluebtn.setOnClickListener(this);
+
+
         Bluetoothbtn = (Button) findViewById(R.id.BtnGoToBluetooth);
         Bluetoothbtn.setOnClickListener(this);
-        redbtn = (Button)findViewById(R.id.Btn_Red);
-        redbtn.setOnClickListener(this);
-        greenbtn = (Button)findViewById(R.id.Btn_Green);
-        greenbtn.setOnClickListener(this);
-        //SeekbarRed = (SeekBar)findViewById(R.id.SeekbarRed);
-        //SeekbarGreen = (SeekBar)findViewById(R.id.SeekbarGreen);
-        //SeekbarBlue = (SeekBar)findViewById(R.id.SeekbarBlue);
-        //SeekbarRed.setMax(255);
-        //SeekbarRed.setEnabled(false);
+
+
         LoadValues = (Button)findViewById(R.id.ButtonLoadValues);
         LoadValues.setOnClickListener(this);
-        //SeekbarRed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-          //  @Override
-          //  public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-         //       RedValue.setText(progress + "");
-          //  }
+        color = (Button) findViewById(R.id.ButtonGoToColorLayer);
+        color.setOnClickListener(this);
 
-        // @Override
-        //  public void onStartTrackingTouch(SeekBar seekBar) {
-
-        //  }
-
-        //   @Override
-        //   public void onStopTrackingTouch(SeekBar seekBar) {
-
-        //    }
-        // });
-        //SeekbarBlue.setMax(255);
-        //SeekbarBlue.setEnabled(false);
-        //SeekbarBlue.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-          //  @Override
-          //  public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-          //      BlueValue.setText(progress + "");
-          //  }
-
-          //  @Override
-          //  public void onStartTrackingTouch(SeekBar seekBar) {
-
-           // }
-
-           // @Override
-           // public void onStopTrackingTouch(SeekBar seekBar) {
-
-           // }
-        //});
-        //SeekbarGreen.setMax(255);
-        //SeekbarGreen.setEnabled(false);
-       //SeekbarGreen.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-         //   @Override
-          //  public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-          //      GreenValue.setText(progress + "");
-         //   }
-
-          //  @Override
-          //  public void onStartTrackingTouch(SeekBar seekBar) {
-
-         //   }
-
-        //    @Override
-        //    public void onStopTrackingTouch(SeekBar seekBar) {
-
-         //   }
-       // });
-        RedValue = (TextView)findViewById(R.id.TextViewSeekBarRed);
-        BlueValue =(TextView)findViewById(R.id.TextViewSeekBarBlue);
-        GreenValue =(TextView)findViewById(R.id.TextViewSeekBarGreen);
         c1 = (CircularProgressBarRed) findViewById(R.id.circularprogressbarred);
         c1.setEnabled(false);
         c2 = (CircularProgressBarGreen) findViewById(R.id.circularprogressbargreen);
@@ -161,19 +98,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         switch (v.getId())
         {
             case R.id.ButtonGoToTimerMenu:
-                startActivity(new Intent("ap.plantuiapp.timermenu"));
+                startActivity(new Intent("ap.plantuiandroidapp.timermenu"));
                 break;
             case R.id.BtnGoToBluetooth:
-                startActivity(new Intent("ap.plantuiapp.bluetooth"));
+                startActivity(new Intent("ap.plantuiandroidapp.bluetooth"));
                 break;
-            case R.id.Btn_Blue:
-                startActivity(new Intent("ap.plantuiapp.blueled"));
+            case R.id.ButtonGoToColorLayer:
+                startActivity(new Intent("ap.plantuiandroidapp.Colors"));
                 break;
-            case R.id.Btn_Red:
-                startActivity(new Intent("ap.plantuiapp.redled"));
-                break;
-            case R.id.Btn_Green:
-                startActivity(new Intent("ap.plantuiapp.greenled"));
             case R.id.ButtonLoadValues:
                 LoadValues();
                 break;

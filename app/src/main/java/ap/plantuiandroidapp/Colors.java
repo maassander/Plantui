@@ -17,19 +17,66 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 
-public class blueled extends ActionBarActivity implements View.OnClickListener{
+public class Colors extends ActionBarActivity implements View.OnClickListener{
 
-    SeekBar SeekbarIntensityBlue;
+    private SeekBar SeekbarIntensityRed,SeekbarIntensityBlue, SeekbarIntensityGreen;
+    private TextView IntensityRed, IntensityGreen ,IntensityBlue;
+    int ValueGreen ,ValueRed ,ValueBlue;
     Button Save;
-    TextView IntensityBlue;
-    int ValueBlue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_blueled);
-        Save = (Button)findViewById(R.id.ButtonSaveBlueValue);
+        setContentView(R.layout.activity_colors);
+        Save = (Button)findViewById(R.id.ButtonSaveValue);
         Save.setOnClickListener(this);
+        SeekbarIntensityRed = (SeekBar)findViewById(R.id.SeekBarIntensityRed);
+        IntensityRed = (TextView)findViewById(R.id.IntensityRedLed);
+        SeekbarIntensityRed.setMax(255);
+
+        SeekbarIntensityRed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                IntensityRed.setText(progress + "");
+                ValueRed = progress;
+
+
+
+
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        SeekbarIntensityGreen = (SeekBar)findViewById(R.id.SeekBarIntensityGreen);
+        IntensityGreen = (TextView)findViewById(R.id.IntensityGreenLed);
+        SeekbarIntensityGreen.setMax(255);
+
+        SeekbarIntensityGreen.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                IntensityGreen.setText(progress + "");
+                ValueGreen = progress;
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
         SeekbarIntensityBlue = (SeekBar)findViewById(R.id.SeekBarIntensityBlue);
         IntensityBlue = (TextView)findViewById(R.id.IntensityBlueLed);
         SeekbarIntensityBlue.setMax(255);
@@ -50,13 +97,15 @@ public class blueled extends ActionBarActivity implements View.OnClickListener{
 
             }
         });
+        Save.setOnClickListener(this);
+
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_blueled, menu);
+        getMenuInflater().inflate(R.menu.menu_colors, menu);
         return true;
     }
 
@@ -69,7 +118,7 @@ public class blueled extends ActionBarActivity implements View.OnClickListener{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            final AlertDialog.Builder alert = new AlertDialog.Builder(blueled.this);
+            final AlertDialog.Builder alert = new AlertDialog.Builder(Colors.this);
             alert.setMessage("Need help at led screen?\n" +
                     "\n" +
                     "What can you see from led screen?\n" +
@@ -94,40 +143,56 @@ public class blueled extends ActionBarActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-
         Context context = getApplicationContext();
         CharSequence text = "Save Successful!!";
         int duration = Toast.LENGTH_SHORT;
+
         Toast toast = Toast.makeText(context, text, duration);
-        switch (v.getId())
+
+        switch(v.getId())
         {
-            case R.id.ButtonSaveBlueValue:
-                SaveBlueValue();
+            case R.id.ButtonSaveValue:
+                SaveValue();
                 toast.show();
                 finish();
                 break;
         }
     }
-    public void SaveBlueValue()
+    public void SaveValue()
     {
+        //try catch for exception handling
+        FileOutputStream fosred = null;
+        FileOutputStream fosgreen = null;
         FileOutputStream fosblue= null;
         try {
+
+            fosred = openFileOutput("ValueRed.txt", Context.MODE_PRIVATE);
+            fosred.write(ValueRed);
+            fosgreen = openFileOutput("ValueGreen.txt", Context.MODE_PRIVATE);
+            fosgreen.write(ValueGreen);
             fosblue = openFileOutput("ValueBlue.txt", Context.MODE_PRIVATE);
             fosblue.write(ValueBlue);
 
         }
-        catch (FileNotFoundException e) {
+        catch (FileNotFoundException e)
+        {
             e.printStackTrace();
         }
         catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            try {
-                fosblue.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
+        finally {
+            //not caring if there is an exception or not this is running anyway.
+            if(fosred != null && fosgreen != null && fosblue != null)
+                try {
+                       fosred.close();
+                       fosgreen.close();
+                       fosblue.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }}
 
     }
-}
+
+

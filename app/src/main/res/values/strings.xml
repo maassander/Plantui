@@ -42,4 +42,8 @@
     <string name="save">Save</string>
     <string name="load">Load</string>
     <string name="switchbluetooth">switchbluetooth</string>
+    <string name="btnlayer">Layers</string>
+    <string name="title_activity_colors">Colors</string>
+    <string name="colortitle">Colors</string>
+    <string name="moreinfo">More Info</string>
 </resources>
